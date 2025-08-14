@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git branch: 'staging', url: 'https://github.com/Abhilash-s-organization/health-care-api-gateway.git'
+                git branch: 'dev', url: 'https://github.com/Abhilash-s-organization/health-care-api-gateway.git'
             }
         }
 
