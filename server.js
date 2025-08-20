@@ -1,10 +1,17 @@
 const express = require('express');
 const morgan = require('morgan');
+const path = require('path');
 const dotenv = require('dotenv');
 const rateLimit = require('express-rate-limit');
 const authMiddleware = require('./middlewares/auth');
 
-dotenv.config();
+// dotenv.config();
+// Load .env by default, but if NODE_ENV=test, load .env.test
+dotenv.config({
+    path: process.env.NODE_ENV === 'test'
+        ? path.resolve(__dirname, '.env.test')
+        : path.resolve(__dirname, '.env')
+});
 console.log(process.env.PORT); // Reads value from .env
 
 const app = express();

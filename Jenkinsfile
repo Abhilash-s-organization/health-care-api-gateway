@@ -3,6 +3,10 @@ pipeline {
     tools {
         nodejs "nodejs"
     }
+    environment {
+        CHAT_SERVICE = "http://localhost:4000"   // or your chat server URL
+        FILE_SERVICE = "http://localhost:5000"   // example
+    }
 
     stages {
         stage('Install Dependencies') {
@@ -16,7 +20,7 @@ pipeline {
         stage('test') {
             steps {
                 sh '''
-                    npm test
+                    NODE_ENV=test npm test
                 '''
             }
         }
